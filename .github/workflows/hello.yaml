@@ -2,23 +2,10 @@ on:
     push:
         branches:
             - main
-env:
-    GLOBAL_ENV_VAR: learning thoughts global
-    ORG_NAME: xyz limited
+
 jobs:
-    context-job:
+    vars-job:
         runs-on: ubuntu-latest
-        env:
-            JOB_ENV_VAR: learning thoughts job
-            ORG_NAME: abc limited
         steps:
-            - name: steps example
-              env:
-                STEP_ENV_VAR: learning thoughts step
-            
-              run: echo "${{env.GLOBAL_ENV_VAR}} ${{env.JOB_ENV_VAR}} ${{env.STEP_ENV_VAR}}"
-            - name: same environment
-              env:
-                ORG_NAME: pqr limited
-              run: echo " ${{ env.ORG_NAME }}"
-           
+            - name: print vars
+              run: echo 'group= ${{ vars.GROUP_NAME}} user = ${{ vars.USER_NAME}} secret =${{ secrets.TOKEN}}'
