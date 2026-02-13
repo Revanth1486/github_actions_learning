@@ -9,3 +9,4 @@ jobs:
         steps:
             - name: print vars
               run: echo 'group= ${{ vars.GROUP_NAME}} user = ${{ vars.USER_NAME}} secret =${{ secrets.TOKEN}}'
+            - run: printenv
